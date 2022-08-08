@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
+namespace App\Controller;
+
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\GetMapping;
+
+/**
+ * @Controller
+ */
+class IndexController extends AbstractController
+{
+    /**
+     * @GetMapping(path="/")
+     * @return array
+     */
+    public function index(): array
+    {
+        return [
+            'method' => $this->request->getMethod(),
+            'date' => date('Y-m-d H:i:s'),
+        ];
+    }
+
+    /**
+     * 测试接口
+     * @GetMapping(path="/test")
+     * @return array
+     */
+    public function test(): array
+    {
+        return successJson('test');
+    }
+}
