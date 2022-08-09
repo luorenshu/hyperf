@@ -5,8 +5,8 @@
 # @contact  group@hyperf.io
 # @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
 
-FROM hyperf/hyperf:8.0-alpine-v3.12-swoole
-LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT" app.name="Hyperf"
+FROM hyperf/hyperf:7.4-alpine-v3.12-swoole
+LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MIT" app.name="xfbClientApi"
 
 ##
 # ---------- env settings ----------
@@ -14,9 +14,12 @@ LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MI
 # --build-arg timezone=Asia/Shanghai
 ARG timezone
 
+# --build-arg env=dev
+ARG env
+
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     APP_ENV=prod \
-    SCAN_CACHEABLE=(true)
+    SCAN_CACHEABLE=(false)
 
 # update
 RUN set -ex \
@@ -25,7 +28,7 @@ RUN set -ex \
     && php -m \
     && php --ri swoole \
     #  ---------- some config ----------
-    && cd /etc/php8 \
+    && cd /etc/php7 \
     # - config PHP
     && { \
         echo "upload_max_filesize=128M"; \
@@ -40,15 +43,20 @@ RUN set -ex \
     && rm -rf /var/cache/apk/* /tmp/* /usr/share/man \
     && echo -e "\033[42;37m Build Completed :).\033[0m\n"
 
-WORKDIR /opt/www
+RUN apk --no-cache --allow-untrusted --repository https://mirrors.aliyun.com/alpine/v3.6/community/ add gnu-libiconv=1.15-r2
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so
+
+
+WORKDIR /www
 
 # Composer Cache
-# COPY ./composer.* /opt/www/
-# RUN composer install --no-dev --no-scripts
+ COPY ./composer.* /www/
+ RUN composer install --no-dev --no-scripts
 
-COPY . /opt/www
-RUN composer install --no-dev -o && php bin/hyperf.php
+COPY . /www
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer && composer install --no-dev -o && php bin/hyperf.php && php bin/hyperf.php migrate
 
 EXPOSE 9501
 
-ENTRYPOINT ["php", "/opt/www/bin/hyperf.php", "start"]
+ENTRYPOINT ["php","/www/bin/hyperf.php","start"]
+
