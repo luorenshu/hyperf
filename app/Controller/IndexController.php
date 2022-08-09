@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Lib\Tools\Log;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\GetMapping;
 
@@ -38,6 +39,10 @@ class IndexController extends AbstractController
      */
     public function test(): array
     {
+        Log::get()->error('error');
+        Log::get()->debug('debug');
+        Log::get()->notice('notice');
+        Log::get()->warning('warning');
         return successJson('test');
     }
 }

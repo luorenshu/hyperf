@@ -13,6 +13,8 @@
     "license": "Apache-2.0",
     "require": {
         "php": ">=7.3",
+        "ext-bcmath": "*",
+        "ext-json": "*",
         "hyperf/cache": "~2.2.0",
         "hyperf/command": "~2.2.0",
         "hyperf/config": "~2.2.0",
@@ -22,7 +24,7 @@
         "hyperf/framework": "~2.2.0",
         "hyperf/guzzle": "~2.2.0",
         "hyperf/http-server": "~2.2.0",
-        "hyperf/logger": "~2.2.0",
+        "hyperf/logger": "^2.2",
         "hyperf/memory": "~2.2.0",
         "hyperf/process": "~2.2.0",
         "hyperf/redis": "~2.2.0",
@@ -39,7 +41,6 @@
         "swoole/ide-helper": "^4.5"
     },
     "suggest": {
-        "ext-json": "Required to use JSON.",
         "ext-openssl": "Required to use HTTPS.",
         "ext-pdo": "Required to use MySQL Client.",
         "ext-pdo_mysql": "Required to use MySQL Client.",

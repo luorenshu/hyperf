@@ -30,7 +30,7 @@ class AppExceptionHandler extends ExceptionHandler
         $this->logger = $logger;
     }
 
-    public function handle(Throwable $throwable, ResponseInterface $response)
+    public function handle(Throwable $throwable, ResponseInterface $response): ResponseInterface
     {
         if ($throwable instanceof BusinessException) {
             $data = json_encode([

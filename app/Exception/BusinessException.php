@@ -11,6 +11,10 @@ namespace App\Exception;
 
 use Hyperf\Server\Exception\ServerException;
 
+/**
+ * Class BusinessException
+ * @package App\Exception
+ */
 class BusinessException extends ServerException
 {
     public $data = [];
@@ -19,14 +23,5 @@ class BusinessException extends ServerException
     {
         parent::__construct($message, $code);
         $this->data = $data;
-    }
-
-    public function returnError()
-    {
-        $data = [
-            'code' => $this->getCode(),
-            'message' => $this->getMessage(),
-            'data' => $this->data,
-        ];
     }
 }
