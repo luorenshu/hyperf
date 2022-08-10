@@ -17,8 +17,7 @@ use Hyperf\HttpServer\Contract\ResponseInterface;
 use Psr\Container\ContainerInterface;
 
 /**
- * Class AbstractController
- * @package App\Controller
+ * Class AbstractController.
  */
 abstract class AbstractController
 {

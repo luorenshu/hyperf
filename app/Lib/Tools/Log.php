@@ -1,13 +1,15 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Create By PhpStorm
- * 作者 Bonjour<1051953562@qq.com>
- * 日期 2022/8/9
- * 时间 10:22
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace App\Lib\Tools;
-
 
 use Hyperf\Logger\LoggerFactory;
 use Hyperf\Utils\ApplicationContext;
@@ -18,5 +20,4 @@ class Log
     {
         return ApplicationContext::getContainer()->get(LoggerFactory::class)->get($name);
     }
-
 }

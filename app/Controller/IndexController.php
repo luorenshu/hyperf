@@ -22,7 +22,6 @@ class IndexController extends AbstractController
 {
     /**
      * @GetMapping(path="/")
-     * @return array
      */
     public function index(): array
     {
@@ -33,9 +32,8 @@ class IndexController extends AbstractController
     }
 
     /**
-     * 测试接口
+     * 测试接口.
      * @GetMapping(path="/test")
-     * @return array
      */
     public function test(): array
     {

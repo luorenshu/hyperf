@@ -1,19 +1,20 @@
 <?php
+
+declare(strict_types=1);
 /**
- * Create By PhpStorm
- * 作者 Bonjour<1051953562@qq.com>
- * 日期 2022/8/8
- * 时间 17:45
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace App\Lib\Tools;
-
 
 use Hyperf\Macroable\Macroable;
 
 /**
- * Class Request
- * @package App\Lib\Tools
+ * Class Request.
  * @method uid()
  * @method user(string $key = null)
  */

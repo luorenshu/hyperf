@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 return [
     'http' => [
-        \App\Middleware\CorsMiddleware::class, //全局跨域中间件
-        \App\Middleware\RuntimeConsumingMiddleware::class //全局运行时耗时中间件
+        \App\Middleware\CorsMiddleware::class, // 全局跨域中间件
+        \App\Middleware\RuntimeConsumingMiddleware::class, // 全局运行时耗时中间件
     ],
 ];

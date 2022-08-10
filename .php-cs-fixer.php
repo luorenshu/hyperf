@@ -66,7 +66,7 @@ return (new PhpCsFixer\Config())
             'identical' => false,
         ],
         'phpdoc_align' => [
-            'align' => 'center',
+            'align' => 'left',
         ],
         'multiline_whitespace_before_semicolons' => [
             'strategy' => 'no_multi_line',
